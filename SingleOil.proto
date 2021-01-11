@@ -1,0 +1,56 @@
+﻿syntax = "proto3";
+
+service gRPC {
+  rpc GetStationData (StationName) returns (StationData) {}
+  rpc GetStationConfigData (StationName) returns (StationConfigData) {}
+  rpc TurnOnLoopValve01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffLoopValve01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOnLoopValve02(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffLoopValve02(WriteCommand) returns (ControlResult) {}
+  rpc TurnOnOutValve01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffOutValve01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOnOutValve02(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffOutValve02(WriteCommand) returns (ControlResult) {}
+  rpc TurnOnPump01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffPump01(WriteCommand) returns (ControlResult) {}
+  rpc TurnOnPump02(WriteCommand) returns (ControlResult) {}
+  rpc TurnOffPump02(WriteCommand) returns (ControlResult) {}
+  rpc OperateDevice(WriteCommand) returns (ControlResult) {}
+  rpc SetSystemPara(SystemPara) returns (ControlResult) {}
+  rpc setSystemSettingPara(SystemPara) returns (ControlResult) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
+
+message StationName {
+	string name = 1;
+}
+
+message SystemPara {
+	string paraName = 1;
+	string paraValue = 2;
+}
+
+message StationData {
+	string dataJson = 1;
+}
+
+message StationConfigData {
+	string dataJson = 1;
+}
+
+message WriteCommand {
+	string stationName = 1;
+	string deviceName = 2;
+	string newValue = 3;
+}
+
+message ControlResult {
+	string result = 1;
+}
